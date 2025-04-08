@@ -1,3 +1,9 @@
+body {
+  background-color: #fdf9f1;
+  color: #2a2824;
+  line-height: 140%;
+}
+
 .sono {
   font-family: "Sono", monospace;
   font-optical-sizing: auto;
@@ -12,7 +18,7 @@
 }
 
 .post {
-  border: 1px solid darkgrey;
+  border: 1px solid #80786e;
   border-radius: 10px;
   margin: 20px;
   padding: 15px;
@@ -20,8 +26,31 @@
 
 .link {
   padding: 5px;
+  text-decoration: none;
+
+  background-color: #2a2824;
+  color: antiquewhite;
+  transition: linear 0.1s;
+  border-radius: 10px;
+}
+
+.link:hover {
+  color: #2a2824;
+  background-color: antiquewhite;
+  transition: linear 0.1s;
 }
 
 ul li::marker {
   content: "▲ ";
+}
+
+.date {
+  color: #80786e;
+  text-transform: lowercase;
+  font-size: 12px;
+}
+
+.horizontal-break {
+  font-size: 24px;
+  text-align: center;
 }
