@@ -116,3 +116,15 @@ ul li::marker {
 #lime {
   border: 1px solid var(--dark-chocolate);
 }
+
+.image-box {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.image {
+  border-radius: 10px;
+  border: 2px solid var(--lime);
+  margin: 40px;
+}
