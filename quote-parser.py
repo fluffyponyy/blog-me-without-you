@@ -7,6 +7,7 @@ quote_list = []
 
 class QuoteParser(HTMLParser):
     quote = False
+    current_quote = ""
     def handle_starttag(self, tag, attrs):
         if tag == "q":
             QuoteParser.quote = True
@@ -14,11 +15,13 @@ class QuoteParser(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "q":
             QuoteParser.quote = False
+            quote_list.append(QuoteParser.current_quote)
+            QuoteParser.current_quote = "" #reset the current quote to blank
 
     def handle_data(self, data):
 
         if QuoteParser.quote:
-            quote_list.append(data)
+            QuoteParser.current_quote += data
 
 
 
@@ -29,9 +32,13 @@ parser.feed(f.read())
 f.close()
 
 
-f = open("index.html", "a")
-#appending is unideal; need to generate entire page over each time basically
+f = open("quote.html", "w")
 
+s = open("html/index_start.html", "r")
+html_start = s.read()
+
+f.write(html_start)
+s.close()
 for q in quote_list:
-    #Definitely not good to keep writing to a file instead of generating all at once and then writing
     f.write("<h3>" + q + "</h3>")
+    f.write("<div class='horizontal-break'>~</div>")
