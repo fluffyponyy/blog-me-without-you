@@ -94,10 +94,9 @@ ul li::marker {
 }
 
 .circle {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
-  margin: 8px;
 }
 
 #choco {
@@ -106,15 +105,36 @@ ul li::marker {
 
 #vanilla {
   background-color: var(--vanilla);
+  opacity: 1;
+  animation-name: move-over;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
 }
 
 #lime {
   background-color: var(--lime);
+  opacity: 1;
+  animation-name: move-over;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
 }
 
 #vanilla,
 #lime {
   border: 1px solid var(--dark-chocolate);
+}
+
+@keyframes move-over {
+  from {
+    margin-left: 0px;
+  }
+  to {
+    margin-left: 30px;
+  }
 }
 
 .image-box {
