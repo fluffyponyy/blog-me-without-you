@@ -250,3 +250,32 @@ main {
   margin: 15px;
   text-align: center;
 }
+
+tr:nth-child(even) {
+  background-color: #b1ff69;
+}
+
+tr {
+  background-color: var(--marble);
+}
+
+tr:hover {
+  background-color: var(--vanilla);
+}
+
+tr:nth-child(even):hover {
+  background-color: #e4fdcd;
+}
+
+td,
+th {
+  padding: 5px;
+}
+
+table {
+  width: 80%;
+}
+
+th {
+  border: black 1px solid;
+}
