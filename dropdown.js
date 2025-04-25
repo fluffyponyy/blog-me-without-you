@@ -2,7 +2,7 @@ function load_Dates() {
   fetch("./post_archive.json")
     .then((response) => response.json())
     .then((json) => {
-      archive = JSON.parse(json);
+      archive = json;
 
       const content = document.getElementById("date_content");
       if (content.children.length > 0) return;
