@@ -9,21 +9,6 @@ function load_Dates() {
         month,
         day = 0;
 
-      archive = {
-        2025: {
-          4: {
-            7: "1.html",
-            8: "2.html",
-            9: "3.html",
-            10: "4.html",
-            19: "5.html",
-            20: "6.html",
-            21: "7.html",
-            22: "8.html",
-          },
-        },
-      };
-
       for (year in archive) {
         var year_layer = document.createElement("div");
         year_layer.setAttribute("id", "year_layer");
