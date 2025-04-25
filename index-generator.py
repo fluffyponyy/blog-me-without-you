@@ -16,9 +16,13 @@ generated_file = ""
 
 directory_name = "html/blog_posts/"
 directory = os.fsencode(directory_name)
+
+ordered_blog_posts = os.listdir(directory)
+ordered_blog_posts = [x[:len(x)-5] for x in ordered_blog_posts] #cut .html off the end of each filename
+ordered_blog_posts.sort(key=int) #sort ascending numerically; ensures "10" comes after "9" instead of coming after "1"
     
-for file in os.listdir(directory):
-    filename = os.fsdecode(file)
+for file in ordered_blog_posts:
+    filename = os.fsdecode(file) + ".html"
     blog_file = open(directory_name + filename, "r")
     blog_post = blog_file.read()
 
