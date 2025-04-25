@@ -2,29 +2,48 @@ function load_Dates() {
   fetch("./post_archive.json")
     .then((response) => response.json())
     .then((json) => {
-      alert(JSON.stringify(json));
       archive = JSON.parse(json);
 
-      var year,
-        month,
-        day = 0;
+      const content = document.getElementById("date_content");
+      if (content.children.length > 0) return;
+      content.innerHTML = ""; //  clear only the dynamic part
 
-      for (year in archive) {
-        var year_layer = document.createElement("div");
-        year_layer.setAttribute("id", "year_layer");
-        year_layer.innerHTML = year;
-        document.getElementById("date_dropdown").appendChild(year_layer);
-        for (month in archive[year]) {
-          var month_layer = document.createElement("div");
-          month_layer.setAttribute("id", "month_layer");
-          month_layer.innerHTML = month;
-          year_layer.appendChild(month_layer);
-          for (day in archive[year][month]) {
-            var day_layer = document.createElement("div");
-            day_layer.setAttribute("id", "day_layer");
-            day_layer.innerHTML =
-              "<a href='" + archive[year][month][day] + "'> " + day + "</a>";
-            month_layer.appendChild(day_layer);
+      for (const year in archive) {
+        const year_layer = document.createElement("div");
+        year_layer.classList.add("year-layer");
+        year_layer.textContent = year;
+
+        const month_container = document.createElement("div");
+        month_container.classList.add("month-container");
+
+        year_layer.addEventListener("click", () => {
+          month_container.classList.toggle("open");
+        });
+
+        year_layer.appendChild(month_container);
+        content.appendChild(year_layer);
+
+        for (const month in archive[year]) {
+          const month_layer = document.createElement("div");
+          month_layer.classList.add("month-layer");
+          month_layer.textContent = month;
+
+          const day_container = document.createElement("div");
+          day_container.classList.add("day-container");
+
+          month_layer.addEventListener("click", (e) => {
+            e.stopPropagation();
+            day_container.classList.toggle("open");
+          });
+
+          month_container.appendChild(month_layer);
+          month_container.appendChild(day_container);
+
+          for (const day in archive[year][month]) {
+            const day_layer = document.createElement("div");
+            day_layer.classList.add("day-layer");
+            day_layer.innerHTML = `<a href='${archive[year][month][day]}'> ${day}</a>`;
+            day_container.appendChild(day_layer);
           }
         }
       }
