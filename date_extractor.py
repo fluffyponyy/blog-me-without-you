@@ -48,3 +48,5 @@ def get_date(blog_post, fn):
 
     with open("post_archive.json", "w") as outfile:
         outfile.write(json_object)
+
+    return day
