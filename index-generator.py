@@ -1,3 +1,9 @@
+def generate_blog_page(start, post, end, fn, fp):
+    individual_blog_page = start + post + end
+    s = open(fp + fn, "w")
+    s.write(individual_blog_page)
+    s.close()
+
 import os
 import date_extractor
 
@@ -29,7 +35,14 @@ for file in ordered_blog_posts:
     date_extractor.get_date(blog_post, filename)
 
     generated_file = "<div class=post>" + blog_post + "</div>" + generated_file
+
     blog_file.close()
+
+    individual_filepath = "html/individual_pages/"
+
+    if not os.path.isfile(individual_filepath + filename): #only generate page if it does not already exist
+        generate_blog_page(html_start, generated_file, html_end, filename, individual_filepath)
+    
 
 generated_file = html_start + generated_file + html_end
 i.write(generated_file)
