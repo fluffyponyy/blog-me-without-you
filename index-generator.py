@@ -10,6 +10,9 @@ import date_extractor
 s = open("html/index_start.html", "r")
 html_start = s.read()
 
+si = open("html/individual_start.html", "r")
+individual_start = si.read()
+
 e = open("html/index_end.html", "r")
 html_end = e.read()
 
@@ -32,16 +35,18 @@ for file in ordered_blog_posts:
     blog_file = open(directory_name + filename, "r")
     blog_post = blog_file.read()
 
-    date_extractor.get_date(blog_post, filename)
+    day = date_extractor.get_date(blog_post, filename)
 
-    generated_file = "<div class=post>" + blog_post + "</div>" + generated_file
+    new_post = "<div class=post>" + blog_post + "</div>"
+
+    generated_file =  new_post + generated_file
 
     blog_file.close()
 
     individual_filepath = "html/individual_pages/"
 
-    if not os.path.isfile(individual_filepath + filename): #only generate page if it does not already exist
-        generate_blog_page(html_start, generated_file, html_end, filename, individual_filepath)
+    if not os.path.isfile(individual_filepath + day + ".html"): #only generate page if it does not already exist
+        generate_blog_page(individual_start, new_post, html_end, day + ".html", individual_filepath)
     
 
 generated_file = html_start + generated_file + html_end
