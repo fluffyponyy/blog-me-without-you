@@ -42,7 +42,7 @@ function load_Dates() {
           for (const day in archive[year][month]) {
             const day_layer = document.createElement("div");
             day_layer.classList.add("day-layer");
-            post_url = "html/individual_pages/" + day + ".html";
+            post_url = `html/individual_pages/${year}${month}${day}.html`;
             day_layer.innerHTML = `<a href="${post_url}"> ${month}/${day}</a>`;
             day_container.appendChild(day_layer);
           }
