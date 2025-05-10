@@ -107,7 +107,6 @@ ul li::marker {
 
 .header {
   top: 0;
-  position: sticky;
   background: linear-gradient(var(--marble) 25%, transparent 100%);
   padding: 20px;
 }
@@ -408,4 +407,60 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--pistachio-beige);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    width: 0;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  #title-line {
+    flex-direction: column;
+    margin: 0 0 15px 0;
+  }
+  #title {
+    min-width: 100%;
+    text-align: center;
+  }
+  .scroll {
+    margin: 0;
+  }
+  .post {
+    max-width: 100%;
+  }
+  .image {
+    width: 90%;
+    height: 90%;
+    margin: 10px;
+  }
+  .image-box {
+    flex-flow: column;
+  }
+  body {
+    padding: 10px;
+  }
+  .header {
+    position: relative;
+  }
+  .navbar {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .header {
+    position: sticky;
+  }
 }
