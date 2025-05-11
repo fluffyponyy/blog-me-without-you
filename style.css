@@ -427,7 +427,8 @@ a:hover {
     min-width: 100%;
     text-align: center;
   }
-  .scroll {
+  .scroll,
+  .quotes {
     margin: 0;
   }
   .post {
