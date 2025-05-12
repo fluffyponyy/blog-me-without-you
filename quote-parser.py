@@ -14,7 +14,7 @@ class QuoteParser(HTMLParser):
             
 
     def handle_endtag(self, tag):
-        if tag == "br":
+        if tag == "br": #allow for quotes with linebreaks inside of them
             QuoteParser.current_quote += "<br/>"
         if tag == "q":
             QuoteParser.quote = False

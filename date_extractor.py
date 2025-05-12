@@ -6,7 +6,7 @@ class DateParser(HTMLParser):
     is_date_element = False
     current_date = ""
     def handle_starttag(self, tag, attrs):
-        date_class_attribute = ('class', 'date')
+        date_class_attribute = ('class', 'date') #find date of post using class
         if attrs:
             if date_class_attribute in attrs:
                 DateParser.is_date_element = True
@@ -49,4 +49,4 @@ def get_date(blog_post, fn):
     with open("post_archive.json", "w") as outfile:
         outfile.write(json_object)
 
-    return f'{year}{month}{day}'
+    return f'{year}{month}{day}' #this formatted string is the filename for each individual blog post

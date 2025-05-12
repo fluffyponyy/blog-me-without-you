@@ -17,6 +17,7 @@ function load_Dates() {
         month_container.classList.add("month-container");
 
         year_layer.addEventListener("click", () => {
+          //clicking on a year opens the list of months which had any posts
           month_container.classList.toggle("open");
         });
 
@@ -32,6 +33,7 @@ function load_Dates() {
           day_container.classList.add("day-container");
 
           month_layer.addEventListener("click", (e) => {
+            //clicking on a month opens the list of blog posts for those days
             e.stopPropagation();
             day_container.classList.toggle("open");
           });
@@ -42,7 +44,7 @@ function load_Dates() {
           for (const day in archive[year][month]) {
             const day_layer = document.createElement("div");
             day_layer.classList.add("day-layer");
-            post_url = `html/individual_pages/${year}${month}${day}.html`;
+            post_url = `html/individual_pages/${year}${month}${day}.html`; //individual page name
             day_layer.innerHTML = `<a href="${post_url}"> ${month}/${day}</a>`;
             day_container.appendChild(day_layer);
           }
